@@ -1,5 +1,6 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render , redirect , get_object_or_404
 from .models import Student
+from .forms import RegisterStudent
 
 # Create your views here.
 def index(req):
@@ -16,3 +17,17 @@ def delete_student(req,student_id):
     studentrecord = Student.objects.get(student_id = student_id)
     studentrecord.delete()
     return redirect('/')
+
+def register_student(req):
+   if req.method == "GET":
+      context={}
+      form =RegisterStudent()
+      context['form']=form 
+      return render(req,'register_student.html' ,context)
+   else:
+      context={}
+      form = RegisterStudent(req.POST or None)
+      if form.is_valid():
+         form.save()
+      context['form']=form
+      return render("/")
