@@ -26,8 +26,8 @@ def register_student(req):
       return render(req,'register_student.html' ,context)
    else:
       context={}
-      form = RegisterStudent(req.POST or None)
+      form = RegisterStudent(req.POST,req.FILES or None)
       if form.is_valid():
          form.save()
-      context['form']=form
-      return render("/")
+      context['form']= form
+      return redirect("/")
