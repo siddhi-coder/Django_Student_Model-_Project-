@@ -26,4 +26,5 @@ urlpatterns = [
     path('register_student/', views.register_student , name="register_student"),
     path('studentdetails/<int:student_id>', views.studentdetails , name="studentdetails"),
     path('delete_student/<int:student_id>', views.delete_student , name="delete_student"),
+    path('edit_student/<int:student_id>', views.edit_student , name="edit_student"),
 ]+static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

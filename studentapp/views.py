@@ -31,3 +31,19 @@ def register_student(req):
          form.save()
       context['form']= form
       return redirect("/")
+
+def edit_student(req, student_id):
+    studentrecord = Student.objects.get(student_id=student_id)
+    if req.method == "POST":
+        form = RegisterStudent(req.POST, req.FILES, instance=studentrecord)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = RegisterStudent(instance=studentrecord)
+    context = {
+        "form": form,
+        "studentrecord": studentrecord
+    }
+    return render(req, "edit_student.html", context)
+
