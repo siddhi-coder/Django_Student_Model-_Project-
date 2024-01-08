@@ -1,92 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Student Details</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-  </head>
 
-  <body>
-    <div class="container-fluid">
-      <div class="d-flex justify-content-between p-2">
-        <h1>Student Details</h1>
-        <div>
-          <a href="#">Home</a>
-          <a href="#">Login</a>
-          <a href="#">Register</a>
-          <button type="button" class="btn btn-dark">
-            <a
-              href="{% url 'register_student' %}"
-              class="text-decoration-none text-white"
-              >Register Student</a
-            >
-          </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="d-flex justify-content-between p-2">
+      <h1>Student Details</h1>
+      <div>
+        <div class="d-flex justify-content-between">
+          <a class="nav-link active p-3" href="#">Home</a>
+          <a class="nav-link active p-3" href="#">Login</a>
+          <a class="nav-link active p-3" href="{% url 'register_student' %}">Register Student</a>
         </div>
       </div>
-      <table class="table table-bordered">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Student Name</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Date of Birth</th>
-            <th scope="col">Grade</th>
-            <th scope="col">Student Image</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for s in student %}
-          <tr>
-            <td>{{forloop.counter}}</td>
-            <td class="text-capitalize">
-              <a
-                href="studentdetails/{{s.student_id}}"
-                class="text-decoration-none text-dark"
-                >{{s.student_name}}</a
-              >
-            </td>
-            <td>{{s.gender}}</td>
-            <td>{{s.dob}}</td>
-            <td>{{s.grade}}</td>
-            <td>
-              <img
-                src="{{s.student_image.url}}"
-                width="50px"
-                height="50px"
-                alt=""
-              />
-            </td>
-            <td>
-              <button
-                type="button"
-                class="btn btn-primary text-decoration-none text-dark"
-              >
-                <a class="text-decoration-none text-white" href="#">Edit</a>
-              </button>
-              <button type="button" class="btn btn-danger">
-                <a
-                  class="text-decoration-none text-white"
-                  href="/delete_student/{{s.student_id}}"
-                  >Delete</a
-                >
-              </button>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
     </div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    <table class="table table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Student Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Date of Birth</th>
+          <th scope="col">Grade</th>
+          <th scope="col">Student Image</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in student %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td class="text-capitalize">
+            <a href="studentdetails/{{s.student_id}}" class="text-decoration-none text-dark">{{s.student_name}}</a>
+          </td>
+          <td>{{s.gender}}</td>
+          <td>{{s.dob}}</td>
+          <td>{{s.grade}}</td>
+          <td>
+            <img src="{{s.student_image.url}}" width="50px" height="50px" alt="" />
+          </td>
+          <td>
+            <button type="button" class="btn btn-primary text-decoration-none text-dark">
+              <a class="text-decoration-none text-white" href="#">Edit</a>
+            </button>
+            <button type="button" class="btn btn-danger">
+              <a class="text-decoration-none text-white" href="/delete_student/{{s.student_id}}">Delete</a>
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
