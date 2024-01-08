@@ -1,6 +1,10 @@
+from django.forms import PasswordInput
 from django.shortcuts import render , redirect , get_object_or_404
 from .models import Student
 from .forms import RegisterStudent
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate , login , logout
+
 
 # Create your views here.
 def index(req):
@@ -47,3 +51,19 @@ def edit_student(req, student_id):
     }
     return render(req, "edit_student.html", context)
 
+def signup(req):
+    if req.method == "POST":
+        uname = req.POST["uname"]
+        passwd = req.POST["passwd"]
+        cpasswd = req.POST["cpasswd"]
+        context = {}
+        # Create the user if everything is fine
+        userdata = User.objects.create(username=uname, password=passwd)
+        userdata.set_password(passwd)
+        userdata.save()
+        return redirect("/")
+    else:
+        return render(req, "signup.html")
+
+def signin(req):
+   if req.method == "POST":

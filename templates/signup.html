@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Sign Up</h1>
     <form action="" method="post" enctype="multipart/form-data">
-        {% csrf_token%}
-        <br>
-        <label>Enter Email : </label>
-        <input type="email" name="uname" required>
-        <br>
-        <label>Password: </label>
-        <input type="password" name="passwd" id="pwd" required>
-        <br>
-        <label>Confirm Password: </label>
-        <input type="password" name="cpasswd" id="cpwd" required>
-        <br>
-        <input type="submit" value="Register">
-        <button><a href="#">Cancel</a></button>
-        <br>
-        <h3>Already Register ? <a href="#">Sign In</a></h3>
+      {% csrf_token %}
+      <br />
+      <label>Enter Email : </label>
+      <input type="email" name="uname" required />
+      <br />
+      <label>Password: </label>
+      <input type="password" name="passwd" id="pwd" required />
+      <br />
+      <label>Confirm Password: </label>
+      <input type="password" name="cpasswd" id="cpwd" required />
+      <br />
+      <input type="submit" value="Register" />
+      <button><a href="#">Cancel</a></button>
+      <br />
+      <h3>Already Register ? <a href="#">Sign In</a></h3>
     </form>
-</body>
-
+  </body>
 </html>
