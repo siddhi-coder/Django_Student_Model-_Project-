@@ -100,5 +100,5 @@ def signin(req):
         return render(req, "signin.html")
         
 
-
+def logout(req):
        
