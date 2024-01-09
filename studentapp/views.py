@@ -64,11 +64,15 @@ def signup(req):
             context['errormessage'] ="Password doesn't match"
             return render(req,"signup.html" , context)
         else:
-            # Create the user if everything is fine
-            userdata = User.objects.create(username=uname, password=passwd)
-            userdata.set_password(passwd)
-            userdata.save()
-            return redirect("/")
+            try:
+                # Create the user if everything is fine
+                userdata = User.objects.create(username=uname, password=passwd)
+                userdata.set_password(passwd)
+                userdata.save()
+                return redirect("/")
+            except:
+                context["errormessage"] = "User Already exists"
+                return render(req, "signup.html" , context)
     else:
         return render(req, "signup.html")
 
