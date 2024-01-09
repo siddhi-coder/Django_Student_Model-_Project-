@@ -16,7 +16,7 @@
       <div>
         <div class="d-flex justify-content-between">
           <a class="nav-link active p-3" href="#">Home</a>
-          <a class="nav-link active p-3" href="{% url 'signin' %}">Sign In</a>
+          <a class="nav-link active p-3" href="{% url 'signup' %}">Sign In</a>
           <a class="nav-link active p-3" href="{% url 'signup' %}">Sign Up</a>
           <a class="nav-link active p-3" href="#">Logout</a>
           <a class="nav-link active pt-3" href="{% url 'register_student' %}">Register Student</a>
@@ -46,7 +46,7 @@
           <td>{{s.dob}}</td>
           <td>{{s.grade}}</td>
           <td>
-            <img src="{{s.student_image.url}}" width="50px" height="50px" alt="" />
+            <img src="{{s.student_image.url}}" width="80px" height="80px" alt="student_images" />
           </td>
           <td>
             <button type="button" class="btn btn-primary text-decoration-none text-dark">

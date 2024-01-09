@@ -65,5 +65,4 @@ def signup(req):
     else:
         return render(req, "signup.html")
 
-def signin(req):
-   if req.method == "POST":
+       
