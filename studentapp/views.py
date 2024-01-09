@@ -57,11 +57,18 @@ def signup(req):
         passwd = req.POST["passwd"]
         cpasswd = req.POST["cpasswd"]
         context = {}
-        # Create the user if everything is fine
-        userdata = User.objects.create(username=uname, password=passwd)
-        userdata.set_password(passwd)
-        userdata.save()
-        return redirect("/")
+        if uname == "" or passwd == "" or cpasswd == "":
+            context['errormessage'] = "Field can't be empty"
+            return render(req,"signup.html" , context)
+        elif passwd != cpasswd :
+            context['errormessage'] ="Password doesn't match"
+            return render(req,"signup.html" , context)
+        else:
+            # Create the user if everything is fine
+            userdata = User.objects.create(username=uname, password=passwd)
+            userdata.set_password(passwd)
+            userdata.save()
+            return redirect("/")
     else:
         return render(req, "signup.html")
 
