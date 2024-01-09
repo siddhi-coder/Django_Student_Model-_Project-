@@ -8,10 +8,15 @@ from django.contrib.auth import authenticate , login , logout
 
 # Create your views here.
 def index(req):
-   student = Student.objects.all()
-   context = {'student':student}
-   return render(req, 'index.html',context)
-
+   if req.user.is_authenticated:   
+    username = req.user 
+    student = Student.objects.all()
+    context = {'student':student , "username" : username}
+    return render(req, 'index.html',context)
+   else:
+    student = Student.objects.all()
+    context = {'student':student ,}
+    return render(req, 'index.html',context)
 def studentdetails(req , student_id):
    studentrecord = Student.objects.get(student_id = student_id)
    context ={'studentrecord' : studentrecord }
