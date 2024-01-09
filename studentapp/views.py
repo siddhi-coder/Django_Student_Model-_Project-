@@ -75,5 +75,25 @@ def signup(req):
                 return render(req, "signup.html" , context)
     else:
         return render(req, "signup.html")
+def signin(req):
+    if req.method == "POST":  # Corrected method to lowercase "post"
+        uname = req.POST.get("uname")
+        passwd = req.POST.get("passwd")
+        context = {}
+        if not (uname and passwd):
+            context['errormessage'] = "Fields can't be empty"
+            return render(req, "signin.html", context)
+        else:
+            userdata = authenticate(username=uname, password=passwd)
+            if userdata is not None:
+                login(req, userdata)
+                return redirect("/")
+            else:
+                context['errormessage'] = "Invalid username or password"
+                return render(req, "signin.html", context)
+    else:
+        return render(req, "signin.html")
+        
+
 
        

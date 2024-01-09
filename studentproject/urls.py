@@ -28,5 +28,5 @@ urlpatterns = [
     path('delete_student/<int:student_id>', views.delete_student , name="delete_student"),
     path('edit_student/<int:student_id>', views.edit_student , name="edit_student"),
     path('signup/', views.signup , name="signup"),
-    # path('signin/', views.signin , name="signin"),
+    path('signin/', views.signin , name="signin"),
 ]+static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
